@@ -1,0 +1,74 @@
+﻿import java.util.Scanner;
+
+public class TwoDigitCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first two-digit number:");
+        int num1 = getTwoDigitNumber(scanner);
+
+        System.out.println("Enter the second two-digit number:");
+        int num2 = getTwoDigitNumber(scanner);
+
+        System.out.println("Choose an operation (add/sub/mul/div):");
+        String operation = scanner.next();
+
+        switch (operation) {
+            case "add":
+                performAddition(num1, num2);
+                break;
+            case "sub":
+                performSubtraction(num1, num2);
+                break;
+            case "mul":
+                performMultiplication(num1, num2);
+                break;
+            case "div":
+                performDivision(num1, num2);
+                break;
+            default:
+                System.out.println("Invalid operation");
+        }
+    }
+
+    private static int getTwoDigitNumber(Scanner scanner) {
+        int number;
+        while (true) {
+            try {
+                number = Integer.parseInt(scanner.next());
+                if (number >= 10 && number <= 99) {
+                    break;
+                } else {
+                    System.out.println("Please enter a valid two-digit number.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid two-digit number.");
+            }
+        }
+        return number;
+    }
+
+    private static void performAddition(int num1, int num2) {
+        int result = num1 + num2;
+        System.out.println("Result of addition: " + result);
+    }
+
+    private static void performSubtraction(int num1, int num2) {
+        int result = num1 - num2;
+        System.out.println("Result of subtraction: " + result);
+    }
+
+    private static void performMultiplication(int num1, int num2) {
+        int result = num1 * num2;
+        System.out.println("Result of multiplication: " + result);
+    }
+
+    private static void performDivision(int num1, int num2) {
+        if (num2 != 0) {
+            int result = num1 / num2;
+            System.out.println("Result of division: " + result);
+        } else {
+            System.out.println("Division by zero is not allowed.");
+        }
+    }
+}
